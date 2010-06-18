@@ -1,18 +1,20 @@
-# Paddock
+# Padlock
 
     "...even Nedry knew better than to mess with the raptor fences."
 
-Paddock is a feature switch system.
+Padlock is a component switch system.
 
-Define which features should be used in certain environments.
+Define which components should be used in certain environments.
+
+Padlock is a fork of Paddock, but uses the term component instead of feature to reduce domain collisions.
 
 ## Setup
 
-Put this somewhere like: `config/initializers/paddock.rb`
+Put this somewhere like: `config/initializers/padlock.rb`
 
-    include Paddock
+    include Padlock
 
-    Paddock(Rails.env) do
+    Padlock(Rails.env) do
       enable  :phone_system,  :in => [:development, :test]
       enable  :door_locks,    :in => :development
       enable  :raptor_fences
@@ -24,13 +26,13 @@ You name it, we got it.
 
 ## Usage
 
-    # Check if feature is enabled
-    if feature(:perimeter_fence)
+    # Check if component is enabled
+    if component(:perimeter_fence)
       # do work
     end
 
     # Guard a block
-    feature(:perimeter_fence) do
+    component(:perimeter_fence) do
       # do work
     end
 
@@ -40,10 +42,10 @@ This is a unix system. I know this.
 
 This might need some work.
 
-You can define which features are enabled in a test:
+You can define which components are enabled in a test:
 
     before(:each) do
-      Paddock.enable :feature_i_am_testing
+      Padlock.enable :component_i_am_testing
     end
 
 You think that kind of automation is easy? Or cheap?
@@ -55,6 +57,8 @@ We're not computer nerds. We prefer to be called "hackers."
 * Pat Nakajima
 * Brandon Keene
 
-![system secured](http://ak2.static.dailymotion.com/static/video/024/680/8086420:jpeg_preview_large.jpg)
+I prefer not to be too closely associated with the aforementioned "hackers."
+
+* Todd Persen
 
 (c) Copyright 2010 Pivotal Labs, see LICENSE
