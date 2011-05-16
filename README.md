@@ -27,12 +27,12 @@ You name it, we got it.
 ## Usage
 
     # Check if component is enabled
-    if component(:perimeter_fence)
+    if Padlock.component(:perimeter_fence)
       # do work
     end
 
     # Guard a block
-    component(:perimeter_fence) do
+    Padlock.component(:perimeter_fence) do
       # do work
     end
 

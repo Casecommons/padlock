@@ -52,7 +52,7 @@ module Padlock
     Padlock::Component.add(name, (options[:in] || :all), :disabled)
   end
 
-  def component(name)
+  def self.component(name)
     enabled = Padlock::Component.get(name).enabled?
     enabled && yield if block_given?
     enabled

@@ -10,7 +10,7 @@ describe Padlock('development') do
 
   it "raises a ComponentNotFound error when the component don't not exist none" do
     proc {
-      component(:raptor_fences)
+      Padlock.component(:raptor_fences)
     }.should raise_error(Padlock::ComponentNotFound)
   end
 
@@ -24,12 +24,12 @@ describe Padlock('development') do
 
       it "runs the component block always" do
         called = false
-        component(:perimeter_fence) { called = true }
+        Padlock.component(:perimeter_fence) { called = true }
         called.should be_true
       end
 
       it "always returns true on component check" do
-        component(:perimeter_fence).should be_true
+        Padlock.component(:perimeter_fence).should be_true
       end
     end
 
@@ -47,12 +47,12 @@ describe Padlock('development') do
 
         it "runs the component block" do
           called = false
-          component(:perimeter_fence) { called = true }
+          Padlock.component(:perimeter_fence) { called = true }
           called.should be_true
         end
 
         it "returns true from the component check" do
-          component(:perimeter_fence).should be_true
+          Padlock.component(:perimeter_fence).should be_true
         end
 
         it "is indifferent to strings/symbols" do
@@ -61,7 +61,7 @@ describe Padlock('development') do
           end
 
           called = false
-          component(:perimeter_fence) { called = true }
+          Padlock.component(:perimeter_fence) { called = true }
           called.should be_true
         end
       end
@@ -81,12 +81,12 @@ describe Padlock('development') do
 
         it "runs the component block" do
           called = false
-          component(:perimeter_fence) { called = true }
+          Padlock.component(:perimeter_fence) { called = true }
           called.should be_true
         end
 
         it "returns true from the component check" do
-          component(:perimeter_fence).should be_true
+          Padlock.component(:perimeter_fence).should be_true
         end
 
         it "is indifferent to strings/symbols" do
@@ -95,7 +95,7 @@ describe Padlock('development') do
           end
 
           called = false
-          component(:perimeter_fence) { called = true }
+          Padlock.component(:perimeter_fence) { called = true }
           called.should be_true
         end
       end
@@ -107,12 +107,12 @@ describe Padlock('development') do
 
         it "does not run the component block when not in an appropriate environment" do
           called = false
-          component(:perimeter_fence) { called = true }
+          Padlock.component(:perimeter_fence) { called = true }
           called.should be_false
         end
 
         it "returns false from the component check" do
-          component(:perimeter_fence).should be_false
+          Padlock.component(:perimeter_fence).should be_false
         end
       end
     end
@@ -127,12 +127,12 @@ describe Padlock('development') do
 
     it "does not run the component block when not in an appropriate environment" do
       called = false
-      component(:perimeter_fence) { called = true }
+      Padlock.component(:perimeter_fence) { called = true }
       called.should be_false
     end
 
     it "returns false from the component check" do
-      component(:perimeter_fence).should be_false
+      Padlock.component(:perimeter_fence).should be_false
     end
   end
 
@@ -145,12 +145,12 @@ describe Padlock('development') do
 
     it "does not run the component block when not in an appropriate environment" do
       called = false
-      component(:perimeter_fence) { called = true }
+      Padlock.component(:perimeter_fence) { called = true }
       called.should be_false
     end
 
     it "returns false from the component check" do
-      component(:perimeter_fence).should be_false
+      Padlock.component(:perimeter_fence).should be_false
     end
 
     it "is indifferent to strings/symbols" do
@@ -159,7 +159,7 @@ describe Padlock('development') do
       end
 
       called = false
-      component(:perimeter_fence) { called = true }
+      Padlock.component(:perimeter_fence) { called = true }
       called.should be_true
     end
   end
@@ -173,12 +173,12 @@ describe Padlock('development') do
 
     it "does not run the component block when not in an appropriate environment" do
       called = false
-      component(:perimeter_fence) { called = true }
+      Padlock.component(:perimeter_fence) { called = true }
       called.should be_true
     end
 
     it "returns false from the component check" do
-      component(:perimeter_fence).should be_true
+      Padlock.component(:perimeter_fence).should be_true
     end
 
     it "is indifferent to strings/symbols" do
@@ -187,7 +187,7 @@ describe Padlock('development') do
       end
 
       called = false
-      component(:perimeter_fence) { called = true }
+      Padlock.component(:perimeter_fence) { called = true }
       called.should be_true
     end
   end
@@ -202,10 +202,10 @@ describe Padlock('development') do
 
     it "restores original component behavior" do
       Padlock.disable :enabled_component
-      component(:enabled_component).should be_false
+      Padlock.component(:enabled_component).should be_false
 
       Padlock.reset!
-      component(:enabled_component).should be_true
+      Padlock.component(:enabled_component).should be_true
     end
   end
 end
